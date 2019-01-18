@@ -9,6 +9,9 @@ in a coordinated fasion, increment all version numbers
 gulp build
 npm publish --access public
 ```
+<img src="https://cdn.wealthforge.com/dew-jpg.jpg" width="60" height="60" alt="meme" style="float:left;" />
+
+
 <img src="http://udos86.de/logo_ng2_dynamic_forms@2x.png" width="96" height="96" alt="Logo NG Dynamic Forms" style="float:left;" />
 
 # NG Dynamic Forms
@@ -73,7 +76,7 @@ npm i @wf-dynamic-forms/ui-material -S
 
 **1. Clone the Git repository**:
 ```
-git clone https://github.com/udos86/ng-dynamic-forms.git
+git clone https://github.com/Wealthforge-Technologies/ng-dynamic-forms.git
 cd ng-dynamic-forms
 ```
 
@@ -197,14 +200,14 @@ export class MyDynamicFormComponent implements OnInit {
 
 NG Dynamic Forms is built to provide **solid yet unobtrusive** support for a variety of common UI libraries:
 
-* **[Basic](https://github.com/udos86/ng-dynamic-forms/tree/master/packages/ui-basic)**
-* **[Bootstrap / ngx-bootstrap](https://github.com/udos86/ng-dynamic-forms/tree/master/packages/ui-bootstrap)**
-* **[Foundation](https://github.com/udos86/ng-dynamic-forms/tree/master/packages/ui-foundation)**
-* **[Ionic](https://github.com/udos86/ng-dynamic-forms/tree/master/packages/ui-ionic)**
-* **[Kendo UI](https://github.com/udos86/ng-dynamic-forms/tree/master/packages/ui-kendo)**
-* **[Material](https://github.com/udos86/ng-dynamic-forms/tree/master/packages/ui-material)**
-* **[NG Bootstrap](https://github.com/udos86/ng-dynamic-forms/tree/master/packages/ui-ng-bootstrap)**
-* **[PrimeNG](https://github.com/udos86/ng-dynamic-forms/tree/master/packages/ui-primeng)**
+* **[Basic](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/tree/master/packages/ui-basic)**
+* **[Bootstrap / ngx-bootstrap](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/tree/master/packages/ui-bootstrap)**
+* **[Foundation](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/tree/master/packages/ui-foundation)**
+* **[Ionic](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/tree/master/packages/ui-ionic)**
+* **[Kendo UI](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/tree/master/packages/ui-kendo)**
+* **[Material](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/tree/master/packages/ui-material)**
+* **[NG Bootstrap](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/tree/master/packages/ui-ng-bootstrap)**
+* **[PrimeNG](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/tree/master/packages/ui-primeng)**
 
 You can instantly plug in your favorite form controls by **installing the appropriate
 package and its peer dependencies**:
@@ -1380,7 +1383,7 @@ Yes, namely [ng-formly](https://github.com/formly-js/ng-formly), [ngx-forms](htt
 
 > **How can I support this project besides contributing issues or code?**
 
-[Star](https://github.com/udos86/ng-dynamic-forms/stargazers) the repository.
+[Star](https://github.com/Wealthforge-Technologies/ng-dynamic-forms/stargazers) the repository.
 
 
 ## Appendix
