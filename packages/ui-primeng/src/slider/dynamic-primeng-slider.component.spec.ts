@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { Slider, SliderModule } from "primeng/primeng";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicSliderModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicSliderModel } from "@wf-dynamic-forms/core";
 import { DynamicPrimeNGSliderComponent } from "./dynamic-primeng-slider.component";
 
 describe("DynamicPrimeNGSliderComponent test suite", () => {

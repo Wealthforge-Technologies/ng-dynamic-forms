@@ -2,7 +2,7 @@
 
 ## Installation
 ```
-npm i @ng-dynamic-forms/ui-basic -S
+npm i @wf-dynamic-forms/ui-basic -S
 ```
 
 ## Import
@@ -50,4 +50,4 @@ with **`DynamicBasicFormControlComponent`**:
 ## Resources
 
 * [**API Documentation**](http://ng2-dynamic-forms.udos86.de/docs/ui-basic/)
-* [**Live Sample**](http://ng2-dynamic-forms.udos86.de/sample/index.aot.html#basic-sample-form) 
+* [**Live Sample**](http://ng2-dynamic-forms.udos86.de/sample/index.aot.html#basic-sample-form)

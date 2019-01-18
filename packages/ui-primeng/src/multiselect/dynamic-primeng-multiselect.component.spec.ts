@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { MultiSelect, MultiSelectModule } from "primeng/primeng";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicSelectModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicSelectModel } from "@wf-dynamic-forms/core";
 import { DynamicPrimeNGMultiSelectComponent } from "./dynamic-primeng-multiselect.component";
 
 describe("DynamicPrimeNGMultiSelectComponent test suite", () => {

@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { NumericTextBoxComponent, NumericTextBoxModule } from "@progress/kendo-angular-inputs";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicInputModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicInputModel } from "@wf-dynamic-forms/core";
 import { DynamicKendoNumericTextBoxComponent } from "./dynamic-kendo-numerictextbox.component";
 
 describe("DynamicKendoNumericTextBoxComponent test suite", () => {

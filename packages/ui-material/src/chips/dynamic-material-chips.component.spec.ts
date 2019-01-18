@@ -16,7 +16,7 @@ import {
     MatOption
 } from "@angular/material";
 import { TextMaskModule } from "angular2-text-mask";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicInputModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicInputModel } from "@wf-dynamic-forms/core";
 import { DynamicMaterialChipsComponent } from "./dynamic-material-chips.component";
 
 describe("DynamicMaterialChipsComponent test suite", () => {

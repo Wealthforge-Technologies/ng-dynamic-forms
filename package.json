@@ -1,6 +1,6 @@
 {
-  "name": "ng-dynamic-forms",
-  "version": "7.0.4",
+  "name": "wf-dynamic-forms",
+  "version": "10.0.0",
   "description": "A rapid form development library for Angular",
   "scripts": {
     "aot-compile:sample": "ngc -p sample/tsconfig.aot.ngc.json",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/udos86/ng-dynamic-forms.git"
+    "url": "git+https://github.com/Wealthforge-Technologies/ng-dynamic-forms.git"
   },
   "author": {
     "name": "Udo Schöfer",
@@ -37,7 +37,7 @@
   "bugs": {
     "url": "https://github.com/udos86/ng-dynamic-forms/issues"
   },
-  "homepage": "https://github.com/udos86/ng-dynamic-forms#readme",
+  "homepage": "https://github.com/Wealthforge-Technologies/ng-dynamic-forms#readme",
   "dependencies": {
     "@angular/animations": "^7.1.4",
     "@angular/cdk": "^7.2.0",

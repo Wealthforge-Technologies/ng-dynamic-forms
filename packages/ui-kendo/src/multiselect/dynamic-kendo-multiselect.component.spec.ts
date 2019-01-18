@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { MultiSelectComponent, MultiSelectModule } from "@progress/kendo-angular-dropdowns";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicSelectModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicSelectModel } from "@wf-dynamic-forms/core";
 import { DynamicKendoMultiSelectComponent } from "./dynamic-kendo-multiselect.component";
 
 describe("DynamicKendoMultiSelectComponent test suite", () => {

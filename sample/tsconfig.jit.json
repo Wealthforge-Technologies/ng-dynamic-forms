@@ -12,8 +12,8 @@
     "moduleResolution": "node",
     "noImplicitAny": false,
     "paths": {
-      "@ng-dynamic-forms/*": [
-        "../dist/@ng-dynamic-forms/*"
+      "@wf-dynamic-forms/*": [
+        "../dist/@wf-dynamic-forms/*"
       ]
     },
     "removeComments": false,

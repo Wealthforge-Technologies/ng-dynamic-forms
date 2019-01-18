@@ -73,7 +73,7 @@ const utils = {
             "@ionic/angular": "@ionic/angular",
             "@ng-bootstrap/ng-bootstrap": "@ng-bootstrap/ng-bootstrap",
             "@ng-bootstrap/ng-bootstrap/index": "@ng-bootstrap/ng-bootstrap",
-            "@ng-dynamic-forms/core": "ngDF.core",
+            "@wf-dynamic-forms/core": "ngDF.core",
             "@progress/kendo-angular-dateinputs": "progress/kendo-angular-dateinputs",
             "@progress/kendo-angular-dropdowns": "progress/kendo-angular-dropdowns",
             "@progress/kendo-angular-inputs": "progress/kendo-angular-inputs",

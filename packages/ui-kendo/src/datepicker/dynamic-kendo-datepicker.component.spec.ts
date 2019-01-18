@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { DatePickerModule, DatePickerComponent } from "@progress/kendo-angular-dateinputs";
-import { DynamicDatePickerModel, DynamicFormsCoreModule, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicDatePickerModel, DynamicFormsCoreModule, DynamicFormService } from "@wf-dynamic-forms/core";
 import { DynamicKendoDatePickerComponent } from "./dynamic-kendo-datepicker.component";
 
 describe("DynamicKendoDatePickerComponent test suite", () => {

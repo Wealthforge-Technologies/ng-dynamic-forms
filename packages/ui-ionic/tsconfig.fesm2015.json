@@ -10,7 +10,7 @@
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "enableResourceInlining": true,
-    "flatModuleId": "@ng-dynamic-forms/ui-ionic",
+    "flatModuleId": "@wf-dynamic-forms/ui-ionic",
     "flatModuleOutFile": "ui-ionic.js",
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true

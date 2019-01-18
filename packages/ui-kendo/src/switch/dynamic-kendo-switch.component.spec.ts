@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { SwitchComponent, SwitchModule } from "@progress/kendo-angular-inputs";
 import { TextMaskModule } from "angular2-text-mask";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicSwitchModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicSwitchModel } from "@wf-dynamic-forms/core";
 import { DynamicKendoSwitchComponent } from "./dynamic-kendo-switch.component";
 
 describe("DynamicKendoSwitchComponent test suite", () => {

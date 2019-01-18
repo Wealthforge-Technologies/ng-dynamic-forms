@@ -11,7 +11,7 @@ import {
     DynamicSwitchModel,
     DynamicTextAreaModel,
     DynamicTimePickerModel
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 
 export const PRIME_NG_SAMPLE_FORM_MODEL = [
 

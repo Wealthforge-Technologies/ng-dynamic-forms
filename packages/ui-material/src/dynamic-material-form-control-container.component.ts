@@ -33,7 +33,7 @@ import {
     DynamicFormValidationService,
     DynamicInputModel,
     DynamicTemplateDirective,
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 import { DynamicMaterialDatePickerComponent } from "./datepicker/dynamic-material-datepicker.component";
 import { DynamicMaterialInputComponent } from "./input/dynamic-material-input.component";
 import { DynamicMaterialTextAreaComponent } from "./textarea/dynamic-material-textarea.component";

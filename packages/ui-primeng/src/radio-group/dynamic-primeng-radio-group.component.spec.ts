@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { RadioButtonModule } from "primeng/primeng";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicRadioGroupModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicRadioGroupModel } from "@wf-dynamic-forms/core";
 import { DynamicPrimeNGRadioGroupComponent } from "./dynamic-primeng-radio-group.component";
 
 describe("DynamicPrimeNGRadioGroupComponent test suite", () => {

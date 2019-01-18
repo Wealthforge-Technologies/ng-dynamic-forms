@@ -31,7 +31,7 @@ import {
     DYNAMIC_FORM_CONTROL_TYPE_SWITCH,
     DYNAMIC_FORM_CONTROL_TYPE_TEXTAREA,
     DYNAMIC_FORM_CONTROL_TYPE_TIMEPICKER
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 import { DynamicIonicCheckboxComponent } from "./checkbox/dynamic-ionic-checkbox.component";
 import { DynamicIonicDateTimeComponent } from "./datetime/dynamic-ionic-datetime.component";
 import { DynamicIonicFormArrayComponent } from "./form-array/dynamic-ionic-form-array.component";

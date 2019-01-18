@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { IonRange } from "@ionic/angular";
 import { TextMaskModule } from "angular2-text-mask";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicSliderModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicSliderModel } from "@wf-dynamic-forms/core";
 import { DynamicIonicRangeComponent } from "./dynamic-ionic-range.component";
 
 describe("DynamicIonicRangeComponent test suite", () => {

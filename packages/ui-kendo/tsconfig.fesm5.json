@@ -10,7 +10,7 @@
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "enableResourceInlining": true,
-    "flatModuleId": "@ng-dynamic-forms/ui-kendo",
+    "flatModuleId": "@wf-dynamic-forms/ui-kendo",
     "flatModuleOutFile": "ui-kendo.js",
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true

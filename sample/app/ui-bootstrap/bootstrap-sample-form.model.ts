@@ -9,7 +9,7 @@ import {
     DynamicTimePickerModel,
     DynamicFormArrayModel,
     DynamicFormGroupModel
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 import { of } from "rxjs/observable/of";
 
 export const BOOTSTRAP_SAMPLE_FORM_MODEL = [

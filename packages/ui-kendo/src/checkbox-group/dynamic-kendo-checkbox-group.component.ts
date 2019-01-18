@@ -7,7 +7,7 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicFormControlComponent
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 
 @Component({
     selector: "dynamic-kendo-checkbox-group",

@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { Calendar, CalendarModule } from "primeng/primeng";
-import { DynamicDatePickerModel, DynamicFormsCoreModule, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicDatePickerModel, DynamicFormsCoreModule, DynamicFormService } from "@wf-dynamic-forms/core";
 import { DynamicPrimeNGCalendarComponent } from "./dynamic-primeng-calendar.component";
 
 describe("DynamicPrimeNGCalendarComponent test suite", () => {

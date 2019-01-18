@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { NgbDatepicker, NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
-import { DynamicDatePickerModel, DynamicFormsCoreModule, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicDatePickerModel, DynamicFormsCoreModule, DynamicFormService } from "@wf-dynamic-forms/core";
 import { DynamicNGBootstrapCalendarComponent } from "./dynamic-ng-bootstrap-calendar.component";
 
 describe("DynamicNGBootstrapCalendarComponent test suite", () => {

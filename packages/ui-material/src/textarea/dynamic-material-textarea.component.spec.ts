@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { MatInput, MatInputModule } from "@angular/material";
 import { TextMaskModule } from "angular2-text-mask";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicTextAreaModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicTextAreaModel } from "@wf-dynamic-forms/core";
 import { DynamicMaterialTextAreaComponent } from "./dynamic-material-textarea.component";
 
 describe("DynamicMaterialTextAreaComponent test suite", () => {

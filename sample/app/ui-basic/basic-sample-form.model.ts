@@ -7,7 +7,7 @@ import {
     DynamicTextAreaModel,
     DynamicFormArrayModel,
     DynamicFormGroupModel
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 import { customValidator } from "../app.validators";
 
 export const BASIC_SAMPLE_FORM_MODEL = [

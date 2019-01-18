@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { InputTextModule } from "primeng/primeng";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicInputModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicInputModel } from "@wf-dynamic-forms/core";
 import { DynamicPrimeNGInputComponent } from "./dynamic-primeng-input.component";
 
 describe("DynamicPrimeNGInputComponent test suite", () => {

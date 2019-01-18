@@ -6,7 +6,7 @@ import {
     DynamicFormLayout,
     DynamicFormService,
     DynamicInputModel
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 import { BOOTSTRAP_SAMPLE_FORM_MODEL } from "./bootstrap-sample-form.model";
 import { BOOTSTRAP_SAMPLE_FORM_LAYOUT } from "./bootstrap-sample-form.layout";
 

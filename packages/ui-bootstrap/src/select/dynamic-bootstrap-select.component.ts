@@ -6,7 +6,7 @@ import {
     DynamicFormLayoutService,
     DynamicFormValidationService,
     DynamicSelectModel
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 
 @Component({
     selector: "dynamic-bootstrap-select",

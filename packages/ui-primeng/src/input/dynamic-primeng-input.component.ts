@@ -7,7 +7,7 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicInputModel
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 
 @Component({
     selector: "dynamic-primeng-input",

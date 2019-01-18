@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { DynamicFormService, DynamicFormControlModel } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicFormControlModel } from "@wf-dynamic-forms/core";
 import { LAZY_LOADED_FORM_MODEL } from "./lazy-loaded-form.model";
 import { FormGroup } from "@angular/forms";
 

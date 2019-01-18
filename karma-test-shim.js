@@ -18,7 +18,7 @@ System.config({
     baseURL: "./base/",
 
     paths: {
-        "lib:": "dist/@ng-dynamic-forms/",
+        "lib:": "dist/@wf-dynamic-forms/",
         "npm:": "node_modules/"
     },
 
@@ -64,14 +64,14 @@ System.config({
         "@angular/forms/testing": "npm:@angular/forms/bundles/forms-testing.umd.js",
         "@ionic/angular": "npm:@ionic/angular/dist/ionic-module.js",
         "@ng-bootstrap/ng-bootstrap": "npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.umd.js",
-        "@ng-dynamic-forms/core": "lib:core/bundles/core.umd.js",
-        "@ng-dynamic-forms/ui-basic": "lib:ui-basic/bundles/ui-basic.umd.js",
-        "@ng-dynamic-forms/ui-bootstrap": "lib:ui-bootstrap/bundles/ui-bootstrap.umd.js",
-        "@ng-dynamic-forms/ui-foundation": "lib:ui-foundation/bundles/ui-foundation.umd.js",
-        "@ng-dynamic-forms/ui-kendo": "lib:ui-kendo/bundles/ui-kendo.umd.js",
-        "@ng-dynamic-forms/ui-material": "lib:ui-material/bundles/ui-material.umd.js",
-        "@ng-dynamic-forms/ui-ng-bootstrap": "lib:ui-ng-bootstrap/bundles/ui-ng-bootstrap.umd.js",
-        "@ng-dynamic-forms/ui-primeng": "lib:ui-primeng/bundles/ui-primeng.umd.js",
+        "@wf-dynamic-forms/core": "lib:core/bundles/core.umd.js",
+        "@wf-dynamic-forms/ui-basic": "lib:ui-basic/bundles/ui-basic.umd.js",
+        "@wf-dynamic-forms/ui-bootstrap": "lib:ui-bootstrap/bundles/ui-bootstrap.umd.js",
+        "@wf-dynamic-forms/ui-foundation": "lib:ui-foundation/bundles/ui-foundation.umd.js",
+        "@wf-dynamic-forms/ui-kendo": "lib:ui-kendo/bundles/ui-kendo.umd.js",
+        "@wf-dynamic-forms/ui-material": "lib:ui-material/bundles/ui-material.umd.js",
+        "@wf-dynamic-forms/ui-ng-bootstrap": "lib:ui-ng-bootstrap/bundles/ui-ng-bootstrap.umd.js",
+        "@wf-dynamic-forms/ui-primeng": "lib:ui-primeng/bundles/ui-primeng.umd.js",
         "@progress": "npm:@progress",
         "@progress/kendo-angular-dateinputs": "npm:@progress/kendo-angular-dateinputs/dist/npm/main.js",
         "@progress/kendo-angular-dropdowns": "npm:@progress/kendo-angular-dropdowns/dist/npm/main.js",
@@ -128,7 +128,7 @@ System.config({
     },
 
     packages: {
-        "@ng-dynamic-forms": {
+        "@wf-dynamic-forms": {
             defaultExtension: "js"
         },
         "@progress": {

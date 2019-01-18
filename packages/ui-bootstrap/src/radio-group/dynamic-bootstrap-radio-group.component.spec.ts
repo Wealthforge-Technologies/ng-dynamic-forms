@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormGroup, FormControl } from "@angular/forms";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicRadioGroupModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicRadioGroupModel } from "@wf-dynamic-forms/core";
 import { DynamicBootstrapRadioGroupComponent } from "./dynamic-bootstrap-radio-group.component";
 
 describe("DynamicBootstrapRadioGroupComponent test suite", () => {

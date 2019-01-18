@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { Dropdown, DropdownModule } from "primeng/primeng";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicSelectModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicSelectModel } from "@wf-dynamic-forms/core";
 import { DynamicPrimeNGDropdownComponent } from "./dynamic-primeng-dropdown.component";
 
 describe("DynamicPrimeNGDropdownComponent test suite", () => {

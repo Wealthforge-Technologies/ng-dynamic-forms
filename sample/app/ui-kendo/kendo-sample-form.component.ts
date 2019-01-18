@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { DynamicFormService, DynamicFormControlModel, DynamicFormLayout } from "@ng-dynamic-forms/core";
+import { DynamicFormService, DynamicFormControlModel, DynamicFormLayout } from "@wf-dynamic-forms/core";
 import { KENDO_SAMPLE_FORM_MODEL } from "./kendo-sample-form.model";
 import { KENDO_SAMPLE_FORM_LAYOUT } from "./kendo-sample-form.layout";
 

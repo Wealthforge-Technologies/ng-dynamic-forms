@@ -2,7 +2,7 @@
 
 ## Installation
 ```
-npm i @ng-dynamic-forms/ui-material -S
+npm i @wf-dynamic-forms/ui-material -S
 ```
 
 ## Import

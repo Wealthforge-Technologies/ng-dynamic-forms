@@ -14,8 +14,8 @@
     "noImplicitAny": false,
     "outDir": "aot",
     "paths": {
-      "@ng-dynamic-forms/*": [
-        "../dist/@ng-dynamic-forms/*"
+      "@wf-dynamic-forms/*": [
+        "../dist/@wf-dynamic-forms/*"
       ]
     },
     "suppressImplicitAnyIndexErrors": true,

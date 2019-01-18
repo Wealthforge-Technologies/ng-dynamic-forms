@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { Rating, RatingModule } from "primeng/primeng";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicRatingModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicRatingModel } from "@wf-dynamic-forms/core";
 import { DynamicPrimeNGRatingComponent } from "./dynamic-primeng-rating.component";
 
 describe("DynamicPrimeNGRatingComponent test suite", () => {

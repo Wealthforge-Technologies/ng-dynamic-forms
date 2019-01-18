@@ -6,7 +6,7 @@ import {
     DynamicFormControlModel,
     DynamicFormLayout,
     DynamicFormService,
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 import { FOUNDATION_SAMPLE_FORM_MODEL } from "./foundation-sample-form.model";
 import { FOUNDATION_SAMPLE_FORM_LAYOUT } from "./foundation-sample-form.layout";
 

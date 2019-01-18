@@ -10,7 +10,7 @@
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "enableResourceInlining": true,
-    "flatModuleId": "@ng-dynamic-forms/ui-foundation",
+    "flatModuleId": "@wf-dynamic-forms/ui-foundation",
     "flatModuleOutFile": "ui-foundation.js",
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true

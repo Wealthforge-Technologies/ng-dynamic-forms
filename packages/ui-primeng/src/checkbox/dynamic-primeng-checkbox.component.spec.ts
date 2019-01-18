@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { Checkbox, CheckboxModule } from "primeng/primeng";
-import { DynamicCheckboxModel, DynamicFormsCoreModule, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicCheckboxModel, DynamicFormsCoreModule, DynamicFormService } from "@wf-dynamic-forms/core";
 import { DynamicPrimeNGCheckboxComponent } from "./dynamic-primeng-checkbox.component";
 
 describe("DynamicPrimeNGCheckboxComponent test suite", () => {

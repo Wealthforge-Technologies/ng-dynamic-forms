@@ -12,7 +12,7 @@ const TASK_BUNDLE     = require("./build/gulp/bundle"),
       TASK_TYPEDOC    = require("./build/gulp/typedoc"),
       TASK_VERSION    = require("./build/gulp/version");
 
-const NPM_SCOPE      = "@ng-dynamic-forms",
+const NPM_SCOPE      = "@wf-dynamic-forms",
       SRC_PATH       = "./packages",
       DIST_BASE_PATH = "./dist",
       DIST_PATH      = `${DIST_BASE_PATH}/${NPM_SCOPE}`,
@@ -98,7 +98,7 @@ PACKAGES_NAMES.forEach(packageName => {
                 ignoreCompilerErrors: true,
                 includeDeclarations: true,
                 module: "commonjs",
-                name: `@ng-dynamic-forms/${packageName}`,
+                name: `@wf-dynamic-forms/${packageName}`,
                 out: `docs/${packageName}`,
                 readme: "none",
                 target: "es6",

@@ -7,7 +7,7 @@ import {
     DynamicFormValidationService,
     DynamicFormControlComponent,
     DynamicSliderModel
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 
 @Component({
     selector: "dynamic-ionic-range",

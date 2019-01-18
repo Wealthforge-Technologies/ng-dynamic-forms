@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { BsDatepickerDirective, BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { TextMaskModule } from "angular2-text-mask";
-import { DynamicDatePickerModel, DynamicFormsCoreModule, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicDatePickerModel, DynamicFormsCoreModule, DynamicFormService } from "@wf-dynamic-forms/core";
 import { DynamicBootstrapDatePickerComponent } from "./dynamic-bootstrap-datepicker.component";
 
 describe("DynamicBootstrapDatePickerComponent test suite", () => {

@@ -9,7 +9,7 @@
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
-    "flatModuleId": "@ng-dynamic-forms/core",
+    "flatModuleId": "@wf-dynamic-forms/core",
     "flatModuleOutFile": "core.js",
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true

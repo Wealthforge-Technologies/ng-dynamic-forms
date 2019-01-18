@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { MatCheckbox, MatCheckboxModule } from "@angular/material";
 import { TextMaskModule } from "angular2-text-mask";
-import { DynamicCheckboxModel, DynamicFormsCoreModule, DynamicFormService } from "@ng-dynamic-forms/core";
+import { DynamicCheckboxModel, DynamicFormsCoreModule, DynamicFormService } from "@wf-dynamic-forms/core";
 import { DynamicMaterialCheckboxComponent } from "./dynamic-material-checkbox.component";
 
 describe("DynamicMaterialCheckboxComponent test suite", () => {

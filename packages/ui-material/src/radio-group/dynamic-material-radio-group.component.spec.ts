@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { MatRadioModule } from "@angular/material";
 import { TextMaskModule } from "angular2-text-mask";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicRadioGroupModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicRadioGroupModel } from "@wf-dynamic-forms/core";
 import { DynamicMaterialRadioGroupComponent } from "./dynamic-material-radio-group.component";
 
 describe("DynamicMaterialRadioGroupComponent test suite", () => {

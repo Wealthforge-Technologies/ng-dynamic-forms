@@ -7,7 +7,7 @@ import {
     DynamicSelectModel,
     DynamicSwitchModel,
     DynamicTextAreaModel
-} from "@ng-dynamic-forms/core";
+} from "@wf-dynamic-forms/core";
 import { BehaviorSubject } from "rxjs";
 
 export const STATES_AUTOCOMPLETE_LIST = [

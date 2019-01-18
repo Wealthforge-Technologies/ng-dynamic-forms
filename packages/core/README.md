@@ -2,7 +2,7 @@
 
 ## Installation
 ```
-npm i @ng-dynamic-forms/core -S
+npm i @wf-dynamic-forms/core -S
 ```
 
 ## Import
@@ -20,4 +20,4 @@ export class AppModule {}
 
 ## Resources
 
-* [**API Documentation**](http://ng2-dynamic-forms.udos86.de/docs/core/) 
+* [**API Documentation**](http://ng2-dynamic-forms.udos86.de/docs/core/)

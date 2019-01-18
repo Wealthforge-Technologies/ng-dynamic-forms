@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { TextMaskModule } from "angular2-text-mask";
 import { TimePickerModule, TimePickerComponent } from "@progress/kendo-angular-dateinputs";
-import { DynamicFormsCoreModule, DynamicFormService, DynamicTimePickerModel } from "@ng-dynamic-forms/core";
+import { DynamicFormsCoreModule, DynamicFormService, DynamicTimePickerModel } from "@wf-dynamic-forms/core";
 import { DynamicKendoTimePickerComponent } from "./dynamic-kendo-timepicker.component";
 
 describe("DynamicKendoTimePickerComponent test suite", () => {

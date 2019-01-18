@@ -2,7 +2,7 @@
 
 ## Installation
 ```
-npm i @ng-dynamic-forms/ui-bootstrap -S
+npm i @wf-dynamic-forms/ui-bootstrap -S
 ```
 
 ## Import
