@@ -1,5 +1,5 @@
 # a fork of the work done by https://github.com/udos86/ng-dynamic-forms
- #great job
+<img src="https://cdn.wealthforge.com/dew-jpg.jpg" width="292" height="250" alt="meme saying dew from heaven. thanks udos86" style="float:left;" />
 
 ```
 local dev: git pull
@@ -9,8 +9,6 @@ in a coordinated fasion, increment all version numbers
 gulp build
 npm publish --access public
 ```
-<img src="https://cdn.wealthforge.com/dew-jpg.jpg" width="60" height="60" alt="meme" style="float:left;" />
-
 
 <img src="http://udos86.de/logo_ng2_dynamic_forms@2x.png" width="96" height="96" alt="Logo NG Dynamic Forms" style="float:left;" />
 
