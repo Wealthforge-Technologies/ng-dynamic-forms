@@ -1,13 +1,14 @@
 # a fork of the work done by https://github.com/udos86/ng-dynamic-forms
  #great job
 
-> local dev: git pull
+```
+local dev: git pull
 npm i
 [changes]
 in a coordinated fasion, increment all version numbers
 gulp build
 npm publish --access public
-
+```
 <img src="http://udos86.de/logo_ng2_dynamic_forms@2x.png" width="96" height="96" alt="Logo NG Dynamic Forms" style="float:left;" />
 
 # NG Dynamic Forms
