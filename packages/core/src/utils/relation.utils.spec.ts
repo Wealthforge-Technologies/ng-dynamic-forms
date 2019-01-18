@@ -12,7 +12,7 @@ describe("Relation utils test suite", () => {
     let controlGroup: FormGroup,
         model: DynamicTextAreaModel = new DynamicTextAreaModel({id: "testTextArea"}),
         rel1 = {
-            action: "DISABLE",
+            actions: ["DISABLE"],
             connective: "OR",
             when: [
                 {
@@ -26,7 +26,7 @@ describe("Relation utils test suite", () => {
             ]
         },
         rel2 = {
-            action: "ENABLE",
+            actions: ["ENABLE"],
             connective: "AND",
             when: [
                 {
@@ -40,7 +40,7 @@ describe("Relation utils test suite", () => {
             ]
         },
         rel3 = {
-            action: "DISABLE",
+            actions: ["DISABLE"],
             connective: "AND",
             when: [
                 {
@@ -54,7 +54,7 @@ describe("Relation utils test suite", () => {
             ]
         },
         rel4 = {
-            action: "ENABLE",
+            actions: ["ENABLE"],
             connective: "OR",
             when: [
                 {
@@ -68,7 +68,7 @@ describe("Relation utils test suite", () => {
             ]
         },
         rel5 = {
-            action: "DISABLE",
+            actions: ["DISABLE"],
             connective: "OR",
             when: [
                 {
@@ -131,7 +131,7 @@ describe("Relation utils test suite", () => {
     it("should throw when model depends on itself", () => {
 
         model.relation = [{
-            action: "DISABLE",
+            actions: ["DISABLE"],
             when: [
                 {
                     id: "testTextArea",
@@ -161,7 +161,7 @@ describe("Relation utils test suite", () => {
         model.relation = [rel5];
         expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(true);
 
-        model.relation = [{action: "TEST", when: [{id: "testTextArea", value: "test"}]}];
+        model.relation = [{actions: ["TEST"], when: [{id: "testTextArea", value: "test"}]}];
         expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(false);
     });
 });

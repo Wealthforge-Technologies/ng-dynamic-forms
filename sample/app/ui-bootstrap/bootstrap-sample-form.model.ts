@@ -136,7 +136,7 @@ export const BOOTSTRAP_SAMPLE_FORM_MODEL = [
                 placeholder: "example Textarea",
                 relation: [
                     {
-                        action: "DISABLE",
+                        actions: ["DISABLE"],
                         connective: "OR",
                         when: [
                             {

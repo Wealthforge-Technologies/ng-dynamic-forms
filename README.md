@@ -1239,7 +1239,7 @@ new DynamicTextAreaModel(
         label: "My Textarea",
         relation: [
             {
-                action: "DISABLE",
+                actions: ["DISABLE"],
                 when: [
                     {
                         id: "mySelect",
@@ -1263,7 +1263,7 @@ new DynamicTextAreaModel(
         label: "My Textarea",
         relation: [
             {
-                action: "DISABLE",
+                actions: ["DISABLE"],
                 connective: "AND",
                 when: [
                     {

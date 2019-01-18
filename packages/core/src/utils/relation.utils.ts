@@ -5,6 +5,8 @@ import {
     DynamicFormControlRelationGroup,
     DYNAMIC_FORM_CONTROL_ACTION_DISABLE,
     DYNAMIC_FORM_CONTROL_ACTION_ENABLE,
+    DYNAMIC_FORM_CONTROL_ACTION_HIDDEN,
+    DYNAMIC_FORM_CONTROL_ACTION_VISIBLE,
     DYNAMIC_FORM_CONTROL_CONNECTIVE_AND,
     DYNAMIC_FORM_CONTROL_CONNECTIVE_OR
 } from "../model/misc/dynamic-form-control-relation.model";
@@ -12,7 +14,16 @@ import {
 export function findActivationRelation(relGroups: DynamicFormControlRelationGroup[]): DynamicFormControlRelationGroup | null {
 
     let rel = relGroups.find(rel => {
-        return rel.action === DYNAMIC_FORM_CONTROL_ACTION_DISABLE || rel.action === DYNAMIC_FORM_CONTROL_ACTION_ENABLE;
+        // return rel.action === DYNAMIC_FORM_CONTROL_ACTION_DISABLE || rel.action === DYNAMIC_FORM_CONTROL_ACTION_ENABLE;
+        const allowedActions = [
+            DYNAMIC_FORM_CONTROL_ACTION_DISABLE,
+            DYNAMIC_FORM_CONTROL_ACTION_ENABLE,
+            DYNAMIC_FORM_CONTROL_ACTION_HIDDEN,
+            DYNAMIC_FORM_CONTROL_ACTION_VISIBLE
+        ];
+        const unionSet = new Set([...rel.actions, ...allowedActions]);
+
+        return unionSet.size === allowedActions.length; // should be no "new" actions in the set other than our allowed actions
     });
 
     return rel !== undefined ? rel : null;
@@ -46,7 +57,7 @@ export function isFormControlToBeDisabled(relGroup: DynamicFormControlRelationGr
 
         let control = formGroup.get(rel.id);
 
-        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_DISABLE) {
+        if (control && relGroup.actions.includes(DYNAMIC_FORM_CONTROL_ACTION_DISABLE)) {
 
             if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && !toBeDisabled) {
                 return false;
@@ -59,7 +70,7 @@ export function isFormControlToBeDisabled(relGroup: DynamicFormControlRelationGr
             return rel.value === control.value || rel.status === control.status;
         }
 
-        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_ENABLE) {
+        if (control && relGroup.actions.includes(DYNAMIC_FORM_CONTROL_ACTION_ENABLE)) {
 
             if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && toBeDisabled) {
                 return true;

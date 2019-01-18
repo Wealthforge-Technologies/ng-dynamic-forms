@@ -89,6 +89,24 @@ export const MATERIAL_SAMPLE_FORM_MODEL = [
                 hint: "Maximum: 5",
                 max: 5,
                 min: 0
+            }),
+
+            new DynamicInputModel({
+
+                id: "roomComments",
+                placeholder: "Room Comments",
+                relation: [
+                    {
+                        actions: ["DISABLE"],
+                        connective: "AND",
+                        when: [
+                            {
+                                id: "roomQuantity",
+                                value: 0
+                            }
+                        ]
+                    }
+                ]
             })
         ]
     }),
