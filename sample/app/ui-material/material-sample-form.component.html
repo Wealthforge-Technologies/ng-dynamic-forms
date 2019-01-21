@@ -2,9 +2,13 @@
 
 <div class="content-margin" style="width: 50%;">
 
+    <pre>valid form: {{formGroup.valid}}</pre>
+
     <mat-card>
 
-        <form [formGroup]="formGroup">
+        <form [formGroup]="formGroup" (ngSubmit)="submit()">
+
+            <button type="submit" mat-flat-button color="primary">Submit</button>
 
             <dynamic-material-form [group]="formGroup"
                                    [layout]="formLayout"
@@ -13,6 +17,11 @@
                                    (change)="onChange($event)"
                                    (focus)="onFocus($event)"
                                    (matEvent)="onMatEvent($event)"></dynamic-material-form>
+
+            <!-- <dynamic-material-form-control *ngFor="let controlModel of formModel"
+                [group]="formGroup"
+                [model]="controlModel">
+            </dynamic-material-form-control> -->
 
         </form>
 

@@ -5,14 +5,14 @@ import { DynamicFormValidationService } from "../service/dynamic-form-validation
 import { DynamicRadioGroupModel } from "../model/radio/dynamic-radio-group.model";
 import { DynamicSelectModel } from "../model/select/dynamic-select.model";
 import { DynamicTextAreaModel } from "../model/textarea/dynamic-textarea.model";
-import { findActivationRelation, getRelatedFormControls, isFormControlToBeDisabled } from "./relation.utils";
+import { findActivationRelations, getRelatedFormControls, isFormControlToBeDisabled } from "./relation.utils";
 
 describe("Relation utils test suite", () => {
 
     let controlGroup: FormGroup,
         model: DynamicTextAreaModel = new DynamicTextAreaModel({id: "testTextArea"}),
         rel1 = {
-            actions: ["DISABLE"],
+            action: "DISABLE",
             connective: "OR",
             when: [
                 {
@@ -26,7 +26,7 @@ describe("Relation utils test suite", () => {
             ]
         },
         rel2 = {
-            actions: ["ENABLE"],
+            action: "ENABLE",
             connective: "AND",
             when: [
                 {
@@ -40,7 +40,7 @@ describe("Relation utils test suite", () => {
             ]
         },
         rel3 = {
-            actions: ["DISABLE"],
+            action: "DISABLE",
             connective: "AND",
             when: [
                 {
@@ -54,7 +54,7 @@ describe("Relation utils test suite", () => {
             ]
         },
         rel4 = {
-            actions: ["ENABLE"],
+            action: "ENABLE",
             connective: "OR",
             when: [
                 {
@@ -68,7 +68,7 @@ describe("Relation utils test suite", () => {
             ]
         },
         rel5 = {
-            actions: ["DISABLE"],
+            action: "DISABLE",
             connective: "OR",
             when: [
                 {
@@ -115,10 +115,10 @@ describe("Relation utils test suite", () => {
     it("should find an activation relation correctly", () => {
 
         model.relation = [rel1];
-        expect(findActivationRelation(model.relation)).toBe(rel1);
+        expect(findActivationRelations(model.relation)[0]).toBe(rel1);
 
         model.relation = [rel2];
-        expect(findActivationRelation(model.relation)).toBe(rel2);
+        expect(findActivationRelations(model.relation)[0]).toBe(rel2);
     });
 
     it("should get all related form controls correctly", () => {
@@ -131,7 +131,7 @@ describe("Relation utils test suite", () => {
     it("should throw when model depends on itself", () => {
 
         model.relation = [{
-            actions: ["DISABLE"],
+            action: "DISABLE",
             when: [
                 {
                     id: "testTextArea",
@@ -161,7 +161,7 @@ describe("Relation utils test suite", () => {
         model.relation = [rel5];
         expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(true);
 
-        model.relation = [{actions: ["TEST"], when: [{id: "testTextArea", value: "test"}]}];
+        model.relation = [{action: "TEST", when: [{id: "testTextArea", value: "test"}]}];
         expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(false);
     });
 });

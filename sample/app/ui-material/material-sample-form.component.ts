@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { DynamicFormService, DynamicFormControlModel, DynamicFormLayout } from "@wf-dynamic-forms/core";
 import { MATERIAL_SAMPLE_FORM_MODEL } from "./material-sample-form.model";
@@ -17,10 +17,15 @@ export class MaterialSampleFormComponent implements OnInit {
     formGroup: FormGroup;
     formLayout: DynamicFormLayout = MATERIAL_SAMPLE_FORM_LAYOUT;
 
-    constructor(private formService: DynamicFormService) {}
+    constructor(private formService: DynamicFormService, private cd: ChangeDetectorRef,) {}
 
     ngOnInit() {
         this.formGroup = this.formService.createFormGroup(this.formModel);
+    }
+
+    ngAfterContentChecked() {
+        // explicit change detection to avoid "expression-has-changed-after-it-was-checked-error" when setting enabled property on form controls
+        this.cd.detectChanges();
     }
 
     onBlur($event) {
@@ -41,5 +46,13 @@ export class MaterialSampleFormComponent implements OnInit {
 
     test() {
 
+    }
+
+    submit() {
+        if (this.formGroup.valid) {
+            console.info("form group is valid");
+        } else {
+            console.warn("form group is invalid", this.formGroup);
+        }
     }
 }

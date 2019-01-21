@@ -11,19 +11,15 @@ import {
     DYNAMIC_FORM_CONTROL_CONNECTIVE_OR
 } from "../model/misc/dynamic-form-control-relation.model";
 
-export function findActivationRelation(relGroups: DynamicFormControlRelationGroup[]): DynamicFormControlRelationGroup | null {
+export function findActivationRelations(relGroups: DynamicFormControlRelationGroup[]): DynamicFormControlRelationGroup[] | null {
 
-    let rel = relGroups.find(rel => {
-        // return rel.action === DYNAMIC_FORM_CONTROL_ACTION_DISABLE || rel.action === DYNAMIC_FORM_CONTROL_ACTION_ENABLE;
-        const allowedActions = [
+    let rel = relGroups.filter(rel => {
+        return [
             DYNAMIC_FORM_CONTROL_ACTION_DISABLE,
             DYNAMIC_FORM_CONTROL_ACTION_ENABLE,
             DYNAMIC_FORM_CONTROL_ACTION_HIDDEN,
             DYNAMIC_FORM_CONTROL_ACTION_VISIBLE
-        ];
-        const unionSet = new Set([...rel.actions, ...allowedActions]);
-
-        return unionSet.size === allowedActions.length; // should be no "new" actions in the set other than our allowed actions
+        ].includes(rel.action);
     });
 
     return rel !== undefined ? rel : null;
@@ -57,7 +53,7 @@ export function isFormControlToBeDisabled(relGroup: DynamicFormControlRelationGr
 
         let control = formGroup.get(rel.id);
 
-        if (control && relGroup.actions.includes(DYNAMIC_FORM_CONTROL_ACTION_DISABLE)) {
+        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_DISABLE) {
 
             if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && !toBeDisabled) {
                 return false;
@@ -70,13 +66,52 @@ export function isFormControlToBeDisabled(relGroup: DynamicFormControlRelationGr
             return rel.value === control.value || rel.status === control.status;
         }
 
-        if (control && relGroup.actions.includes(DYNAMIC_FORM_CONTROL_ACTION_ENABLE)) {
+        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_ENABLE) {
 
             if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && toBeDisabled) {
                 return true;
             }
 
             if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && !toBeDisabled) {
+                return false;
+            }
+
+            return !(rel.value === control.value || rel.status === control.status);
+        }
+
+        return false;
+
+    }, false);
+}
+
+export function isFormControlToBeHidden(relGroup: DynamicFormControlRelationGroup, _formGroup: FormGroup): boolean {
+
+    let formGroup: FormGroup = _formGroup;
+
+    return relGroup.when.reduce((toBeHidden: boolean, rel: DynamicFormControlRelation, index: number) => {
+
+        let control = formGroup.get(rel.id);
+
+        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_HIDDEN) {
+
+            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && !toBeHidden) {
+                return false;
+            }
+
+            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && toBeHidden) {
+                return true;
+            }
+
+            return rel.value === control.value || rel.status === control.status;
+        }
+
+        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_VISIBLE) {
+
+            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && toBeHidden) {
+                return true;
+            }
+
+            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && !toBeHidden) {
                 return false;
             }
 

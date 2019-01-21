@@ -86,8 +86,9 @@ export const MATERIAL_SAMPLE_FORM_MODEL = [
                 id: "roomQuantity",
                 inputType: "number",
                 placeholder: "Room Quantity",
-                hint: "Maximum: 5",
-                max: 5,
+                hint: "Maximum: 9",
+                value: 0,
+                max: 9,
                 min: 0
             }),
 
@@ -95,18 +96,43 @@ export const MATERIAL_SAMPLE_FORM_MODEL = [
 
                 id: "roomComments",
                 placeholder: "Room Comments",
+                hidden: true,
                 relation: [
                     {
-                        actions: ["DISABLE"],
-                        connective: "AND",
+                        action: "DISABLE",
+                        connective: "OR",
+                        when: [
+                            {
+                                id: "roomQuantity",
+                                value:  1
+                            },
+                            {
+                                id: "roomQuantity",
+                                value: 4
+                            }
+                        ]
+                    },
+                    {
+                        action: "HIDDEN",
+                        connective: "OR",
                         when: [
                             {
                                 id: "roomQuantity",
                                 value: 0
+                            },
+                            {
+                                id: "roomQuantity",
+                                value: 6
                             }
                         ]
-                    }
-                ]
+                    },
+                ],
+                validators: {
+                    required: null
+                },
+                errorMessages: {
+                    required: "Field is required"
+                }
             })
         ]
     }),
