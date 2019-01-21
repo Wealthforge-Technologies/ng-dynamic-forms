@@ -5,7 +5,7 @@
 local dev: git pull
 npm i
 [changes]
-in a coordinated fasion, increment all version numbers
+increment version (ex: gulp version:patch)
 gulp build
 npm publish --access public
 ```
