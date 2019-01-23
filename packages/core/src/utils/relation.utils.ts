@@ -10,6 +10,7 @@ import {
     DYNAMIC_FORM_CONTROL_CONNECTIVE_AND,
     DYNAMIC_FORM_CONTROL_CONNECTIVE_OR
 } from "../model/misc/dynamic-form-control-relation.model";
+import { DynamicFormLayout } from "../service/dynamic-form-layout.service";
 
 export function findActivationRelations(relGroups: DynamicFormControlRelationGroup[]): DynamicFormControlRelationGroup[] | null {
 
@@ -45,7 +46,7 @@ export function getRelatedFormControls(model: DynamicFormControlModel, controlGr
     return controls;
 }
 
-export function isFormControlToBeDisabled(relGroup: DynamicFormControlRelationGroup, _formGroup: FormGroup): boolean {
+export function isFormControlToBeDisabled(relGroup: DynamicFormControlRelationGroup, _formGroup: FormGroup, _layout: DynamicFormLayout): boolean {
 
     let formGroup: FormGroup = _formGroup;
 
@@ -84,7 +85,7 @@ export function isFormControlToBeDisabled(relGroup: DynamicFormControlRelationGr
     }, false);
 }
 
-export function isFormControlToBeHidden(relGroup: DynamicFormControlRelationGroup, _formGroup: FormGroup): boolean {
+export function isFormControlToBeHidden(relGroup: DynamicFormControlRelationGroup, _formGroup: FormGroup, _layout: DynamicFormLayout): boolean {
 
     let formGroup: FormGroup = _formGroup;
 

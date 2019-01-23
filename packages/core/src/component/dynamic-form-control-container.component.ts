@@ -277,11 +277,11 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
 
     updateModelDisabled(relation: DynamicFormControlRelationGroup): void {
 
-        this.model.disabledUpdates.next(isFormControlToBeDisabled(relation, this.group));
+        this.model.disabledUpdates.next(isFormControlToBeDisabled(relation, this.group, this.layout));
     }
 
     updateModelHidden(relation: DynamicFormControlRelationGroup): void {
-        this.model.hiddenUpdates.next(isFormControlToBeHidden(relation, this.group));
+        this.model.hiddenUpdates.next(isFormControlToBeHidden(relation, this.group, this.layout));
     }
 
     unsubscribe(): void {

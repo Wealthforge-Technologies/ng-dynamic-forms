@@ -15,9 +15,10 @@ import { DynamicFormLayout, DynamicFormLayoutService } from "../service/dynamic-
 
 export abstract class DynamicFormComponent {
 
-    formGroup: FormGroup;
-    formModel: DynamicFormModel;
+    formGroup:  FormGroup;
+    formModel:  DynamicFormModel;
     formLayout: DynamicFormLayout;
+    formStore:  string;
 
     components: QueryList<DynamicFormControlContainerComponent>;
     templates: QueryList<DynamicTemplateDirective>;

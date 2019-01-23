@@ -1,0 +1,1 @@
+export const MATERIAL_SAMPLE_FORM_STORE = `{"age": 21, "height": "as tall as a sequoia"}`;

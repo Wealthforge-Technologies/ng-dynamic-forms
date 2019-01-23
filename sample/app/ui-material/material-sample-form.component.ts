@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { DynamicFormService, DynamicFormControlModel, DynamicFormLayout } from "@wf-dynamic-forms/core";
-import { MATERIAL_SAMPLE_FORM_MODEL } from "./material-sample-form.model";
+import { MATERIAL_SAMPLE_FORM_MODEL }  from "./material-sample-form.model";
 import { MATERIAL_SAMPLE_FORM_LAYOUT } from "./material-sample-form.layout";
+import { MATERIAL_SAMPLE_FORM_STORE }  from "./material-sample-form.store";
 
 @Component({
     moduleId: module.id,
@@ -13,9 +14,10 @@ import { MATERIAL_SAMPLE_FORM_LAYOUT } from "./material-sample-form.layout";
 })
 export class MaterialSampleFormComponent implements OnInit {
 
-    formModel: DynamicFormControlModel[] = MATERIAL_SAMPLE_FORM_MODEL;
-    formGroup: FormGroup;
-    formLayout: DynamicFormLayout = MATERIAL_SAMPLE_FORM_LAYOUT;
+    formModel:      DynamicFormControlModel[] = MATERIAL_SAMPLE_FORM_MODEL;
+    formGroup:      FormGroup;
+    formLayout:     DynamicFormLayout         = MATERIAL_SAMPLE_FORM_LAYOUT;
+    formReduxStore: string                    = MATERIAL_SAMPLE_FORM_STORE;
 
     constructor(private formService: DynamicFormService, private cd: ChangeDetectorRef,) {}
 

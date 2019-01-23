@@ -1,4 +1,4 @@
-import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren } from "@angular/core";
+import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren, AfterViewInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import {
     DynamicFormComponent,
@@ -15,11 +15,12 @@ import { DynamicMaterialFormControlContainerComponent } from "./dynamic-material
     selector: "dynamic-material-form",
     templateUrl: "./dynamic-material-form.component.html"
 })
-export class DynamicMaterialFormComponent extends DynamicFormComponent {
+export class DynamicMaterialFormComponent extends DynamicFormComponent implements AfterViewInit {
 
-    @Input("group") formGroup: FormGroup;
-    @Input("model") formModel: DynamicFormModel;
-    @Input("layout") formLayout: DynamicFormLayout;
+    @Input("group")      formGroup:      FormGroup;
+    @Input("model")      formModel:      DynamicFormModel;
+    @Input("layout")     formLayout:     DynamicFormLayout;
+    @Input("reduxStore") formReduxStore: string; // redux store format must be stringified JSON
 
     @Output() blur: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
     @Output() change: EventEmitter<DynamicFormControlEvent> = new EventEmitter<DynamicFormControlEvent>();
@@ -32,5 +33,11 @@ export class DynamicMaterialFormComponent extends DynamicFormComponent {
 
     constructor(protected formService: DynamicFormService, protected layoutService: DynamicFormLayoutService) {
         super(formService, layoutService);
+    }
+
+    ngAfterViewInit() {
+        // due to time constraints, just piggyback redux store content on formLayout
+        // (vs. figuring out how to pass redux store down the stack as its own property)
+        this.formLayout["store"] = JSON.parse(this.formReduxStore);
     }
 }
