@@ -9,6 +9,7 @@ import {
     DynamicTextAreaModel
 } from "@wf-dynamic-forms/core";
 import { BehaviorSubject } from "rxjs";
+import * as RelationModel from "@wf-dynamic-forms/core/src/model/misc/dynamic-form-control-relation.model"
 
 export const STATES_AUTOCOMPLETE_LIST = [
     'Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
@@ -22,6 +23,42 @@ export const STATES_AUTOCOMPLETE_LIST = [
 ];
 
 export const MATERIAL_SAMPLE_FORM_MODEL = [
+
+    new DynamicInputModel({
+
+        id: "reduxStoreTest",
+        placeholder: "Redux Store Test",
+        relation: [
+            {
+                action: "DISABLE",
+                connective: "OR",
+                when: [
+                    {
+                        id: "counter.counterValue",
+                        comparisonDataSource: RelationModel.EnumComparisonDataSources.JSON,
+                        value:  0
+                    }
+                ]
+            },
+            {
+                action: "HIDDEN",
+                connective: "OR",
+                when: [
+                    {
+                        id: "room.roomQuantity",
+                        comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                        value:  1
+                    }
+                ]
+            }
+        ],
+        validators: {
+            required: null
+        },
+        errorMessages: {
+            required: "Field is required"
+        }
+    }),
 
     new DynamicFormGroupModel({
 

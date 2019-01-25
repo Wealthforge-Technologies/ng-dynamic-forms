@@ -48,6 +48,8 @@
         "@ionic/angular": "npm:@ionic/angular/dist/ionic.js",
         "@ng-bootstrap/ng-bootstrap": "npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.umd.js",
         "@ng-bootstrap/ng-bootstrap/index": "npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.umd.js",
+        '@ngrx/store':'npm:@ngrx/store/bundles/store.umd.js',
+        '@ngrx/store-devtools':'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
         "@wf-dynamic-forms/core": "lib:core/bundles/core.umd.js",
         "@wf-dynamic-forms/ui-basic": "lib:ui-basic/bundles/ui-basic.umd.js",
         "@wf-dynamic-forms/ui-bootstrap": "lib:ui-bootstrap/bundles/ui-bootstrap.umd.js",

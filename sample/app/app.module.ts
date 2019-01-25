@@ -37,6 +37,10 @@ import {
     customAsyncFormGroupValidator
 } from "./app.validators";
 
+import { StoreModule }    from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { counterReducer } from './ui-material/ngrx/counter.reducer';
+
 export function mockBackendFactory(mockBackend: MockBackend, baseRequestOptions: BaseRequestOptions) {
     return new Http(mockBackend, baseRequestOptions);
 }
@@ -63,7 +67,12 @@ export function mockBackendFactory(mockBackend: MockBackend, baseRequestOptions:
         DynamicFormsKendoUIModule,
         DynamicFormsMaterialUIModule,
         DynamicFormsNGBootstrapUIModule,
-        DynamicFormsPrimeNGUIModule
+        DynamicFormsPrimeNGUIModule,
+        StoreModule.forRoot({ count: counterReducer }),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25, // Retains last 25 states
+            // logOnly: environment.production, // Restrict extension to log-only mode
+        }),
     ],
     declarations: [
         BasicSampleFormComponent,

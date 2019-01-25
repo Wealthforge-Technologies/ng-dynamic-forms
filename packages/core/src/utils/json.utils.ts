@@ -40,3 +40,12 @@ export function parseReviver(_key: string, value: any): any {
 
     return isString(value) && regexDateISO.test(value) ? new Date(value) : value;
 }
+
+// get json property by dot notation path
+// EX: given
+//       obj = {person: {firstName: "bob", lastName: "jones"}}
+//     then
+//       getPropertyByPath(obj, "person.lastName") would return "jones"
+export const getPropertyByPath = (obj: any, path: any) => (
+    path.split(".").reduce((acc: any, part: any) => acc && acc[part], obj)
+);

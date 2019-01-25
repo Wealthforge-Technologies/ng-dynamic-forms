@@ -4,6 +4,9 @@ import { DynamicFormService, DynamicFormControlModel, DynamicFormLayout } from "
 import { MATERIAL_SAMPLE_FORM_MODEL }  from "./material-sample-form.model";
 import { MATERIAL_SAMPLE_FORM_LAYOUT } from "./material-sample-form.layout";
 import { MATERIAL_SAMPLE_FORM_STORE }  from "./material-sample-form.store";
+import { Observable } from "rxjs";
+import { Store, select } from "@ngrx/store";
+import { Increment, Decrement, Reset } from './ngrx/counter.actions';
 
 @Component({
     moduleId: module.id,
@@ -17,9 +20,14 @@ export class MaterialSampleFormComponent implements OnInit {
     formModel:      DynamicFormControlModel[] = MATERIAL_SAMPLE_FORM_MODEL;
     formGroup:      FormGroup;
     formLayout:     DynamicFormLayout         = MATERIAL_SAMPLE_FORM_LAYOUT;
-    formReduxStore: string                    = MATERIAL_SAMPLE_FORM_STORE;
+    formReduxStore: string; //                   = MATERIAL_SAMPLE_FORM_STORE;
 
-    constructor(private formService: DynamicFormService, private cd: ChangeDetectorRef,) {}
+    count$: Observable<number>;
+
+    constructor(private store: Store<{count: number}>, private formService: DynamicFormService, private cd: ChangeDetectorRef,) {
+        this.count$ = store.pipe(select('count'));
+        // store.pipe(select('count')).subscribe(val => this.formReduxStore = val);
+    }
 
     ngOnInit() {
         this.formGroup = this.formService.createFormGroup(this.formModel);
@@ -29,6 +37,18 @@ export class MaterialSampleFormComponent implements OnInit {
         // explicit change detection to avoid "expression-has-changed-after-it-was-checked-error" when setting enabled property on form controls
         this.cd.detectChanges();
     }
+
+    increment() {
+        this.store.dispatch(new Increment());
+      }
+
+      decrement() {
+        this.store.dispatch(new Decrement());
+      }
+
+      reset() {
+        this.store.dispatch(new Reset());
+      }
 
     onBlur($event) {
         console.log(`Material blur event on: ${$event.model.id}: `, $event);

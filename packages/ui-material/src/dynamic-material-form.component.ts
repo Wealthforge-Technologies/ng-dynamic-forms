@@ -1,4 +1,4 @@
-import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren, AfterViewInit } from "@angular/core";
+import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, ViewChildren, DoCheck } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import {
     DynamicFormComponent,
@@ -15,7 +15,7 @@ import { DynamicMaterialFormControlContainerComponent } from "./dynamic-material
     selector: "dynamic-material-form",
     templateUrl: "./dynamic-material-form.component.html"
 })
-export class DynamicMaterialFormComponent extends DynamicFormComponent implements AfterViewInit {
+export class DynamicMaterialFormComponent extends DynamicFormComponent implements DoCheck {
 
     @Input("group")      formGroup:      FormGroup;
     @Input("model")      formModel:      DynamicFormModel;
@@ -35,9 +35,9 @@ export class DynamicMaterialFormComponent extends DynamicFormComponent implement
         super(formService, layoutService);
     }
 
-    ngAfterViewInit() {
+    ngDoCheck() {
         // due to time constraints, just piggyback redux store content on formLayout
         // (vs. figuring out how to pass redux store down the stack as its own property)
-        this.formLayout["store"] = JSON.parse(this.formReduxStore);
+        this.formLayout["store"] = JSON.parse(JSON.stringify(this.formReduxStore));
     }
 }

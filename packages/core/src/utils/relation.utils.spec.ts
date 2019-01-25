@@ -5,7 +5,8 @@ import { DynamicFormValidationService } from "../service/dynamic-form-validation
 import { DynamicRadioGroupModel } from "../model/radio/dynamic-radio-group.model";
 import { DynamicSelectModel } from "../model/select/dynamic-select.model";
 import { DynamicTextAreaModel } from "../model/textarea/dynamic-textarea.model";
-import { findActivationRelations, getRelatedFormControls, isFormControlToBeDisabled } from "./relation.utils";
+import { findActivationRelations, getRelatedFormControls, isFormControlToBeToggled } from "./relation.utils";
+import { DynamicFormLayout } from "../service/dynamic-form-layout.service";
 
 describe("Relation utils test suite", () => {
 
@@ -145,23 +146,24 @@ describe("Relation utils test suite", () => {
     });
 
     it("should check if form control is to be disabled correctly", () => {
+        const layout: DynamicFormLayout = {};
 
         model.relation = [rel1];
-        expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(false);
+        expect(isFormControlToBeToggled(model.relation[0], controlGroup, layout)).toBe(false);
 
         model.relation = [rel2];
-        expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(true);
+        expect(isFormControlToBeToggled(model.relation[0], controlGroup, layout)).toBe(true);
 
         model.relation = [rel3];
-        expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(false);
+        expect(isFormControlToBeToggled(model.relation[0], controlGroup, layout)).toBe(false);
 
         model.relation = [rel4];
-        expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(false);
+        expect(isFormControlToBeToggled(model.relation[0], controlGroup, layout)).toBe(false);
 
         model.relation = [rel5];
-        expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(true);
+        expect(isFormControlToBeToggled(model.relation[0], controlGroup, layout)).toBe(true);
 
         model.relation = [{action: "TEST", when: [{id: "testTextArea", value: "test"}]}];
-        expect(isFormControlToBeDisabled(model.relation[0], controlGroup)).toBe(false);
+        expect(isFormControlToBeToggled(model.relation[0], controlGroup, layout)).toBe(false);
     });
 });

@@ -53,6 +53,8 @@
     "@angular/router": "^7.1.4",
     "@ionic/angular": "^4.0.0-rc.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
+    "@ngrx/store": "^7.1.0",
+    "@ngrx/store-devtools": "^7.1.0",
     "@progress/kendo-angular-dateinputs": "^3.5.2",
     "@progress/kendo-angular-dropdowns": "^3.4.1",
     "@progress/kendo-angular-inputs": "^3.5.0",

@@ -6,11 +6,18 @@ export const DYNAMIC_FORM_CONTROL_ACTION_HIDDEN = "HIDDEN";
 export const DYNAMIC_FORM_CONTROL_CONNECTIVE_AND = "AND";
 export const DYNAMIC_FORM_CONTROL_CONNECTIVE_OR = "OR";
 
+export const enum EnumComparisonDataSources {
+    FormControl = "FORM_CONTROL",
+    JSON        = "JSON",
+    API         = "API"
+}
+
 export interface DynamicFormControlRelation {
 
-    id: string;
-    status?: string;
-    value?: any;
+    id:                    string;
+    comparisonDataSource?: EnumComparisonDataSources;
+    status?:               string;
+    value?:                any;
 }
 
 export interface DynamicFormControlRelationGroup {

@@ -2,6 +2,17 @@
 
 <div class="content-margin" style="width: 50%;">
 
+    <mat-card>
+        <button (click)="increment()">Increment</button>
+
+        <div>Current Count: {{ (count$ | async).counter.counterValue }}</div>
+
+        <button (click)="decrement()">Decrement</button>
+        <br><br>
+
+        <button (click)="reset()">Reset Counter</button>
+    </mat-card>
+
     <pre>valid form: {{formGroup.valid}}</pre>
 
     <mat-card>
@@ -13,7 +24,7 @@
             <dynamic-material-form [group]="formGroup"
                                    [layout]="formLayout"
                                    [model]="formModel"
-                                   [reduxStore]="formReduxStore"
+                                   [reduxStore]="count$ | async"
                                    (blur)="onBlur($event)"
                                    (change)="onChange($event)"
                                    (focus)="onFocus($event)"

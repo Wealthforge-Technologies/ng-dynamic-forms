@@ -1,4 +1,4 @@
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, AbstractControl } from "@angular/forms";
 import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
 import {
     DynamicFormControlRelation,
@@ -8,9 +8,11 @@ import {
     DYNAMIC_FORM_CONTROL_ACTION_HIDDEN,
     DYNAMIC_FORM_CONTROL_ACTION_VISIBLE,
     DYNAMIC_FORM_CONTROL_CONNECTIVE_AND,
-    DYNAMIC_FORM_CONTROL_CONNECTIVE_OR
+    DYNAMIC_FORM_CONTROL_CONNECTIVE_OR,
+    EnumComparisonDataSources
 } from "../model/misc/dynamic-form-control-relation.model";
 import { DynamicFormLayout } from "../service/dynamic-form-layout.service";
+import { getPropertyByPath } from "./json.utils";
 
 export function findActivationRelations(relGroups: DynamicFormControlRelationGroup[]): DynamicFormControlRelationGroup[] | null {
 
@@ -46,77 +48,55 @@ export function getRelatedFormControls(model: DynamicFormControlModel, controlGr
     return controls;
 }
 
-export function isFormControlToBeDisabled(relGroup: DynamicFormControlRelationGroup, _formGroup: FormGroup, _layout: DynamicFormLayout): boolean {
-
-    let formGroup: FormGroup = _formGroup;
-
-    return relGroup.when.reduce((toBeDisabled: boolean, rel: DynamicFormControlRelation, index: number) => {
-
-        let control = formGroup.get(rel.id);
-
-        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_DISABLE) {
-
-            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && !toBeDisabled) {
-                return false;
-            }
-
-            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && toBeDisabled) {
-                return true;
-            }
-
+function compare(rel: DynamicFormControlRelation, control: AbstractControl | null, layout: DynamicFormLayout, ): boolean {
+    if (!rel.comparisonDataSource || rel.comparisonDataSource === EnumComparisonDataSources.FormControl) {
+        // compare relation value against a form control's value
+        if (control) {
             return rel.value === control.value || rel.status === control.status;
+        } else {
+            // if relation comparison data source is control and no matching control was found then throw error
+            throw TypeError("control cannot be blank");
         }
-
-        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_ENABLE) {
-
-            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && toBeDisabled) {
-                return true;
-            }
-
-            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && !toBeDisabled) {
-                return false;
-            }
-
-            return !(rel.value === control.value || rel.status === control.status);
-        }
-
-        return false;
-
-    }, false);
+    } else if (rel.comparisonDataSource === EnumComparisonDataSources.JSON) {
+        //  compare relation value against a JSON property
+        return rel.value === getPropertyByPath(layout["store"], rel.id);
+    } else {
+        throw RangeError(`invalid comparison data source: ${rel.comparisonDataSource}`);
+    }
 }
 
-export function isFormControlToBeHidden(relGroup: DynamicFormControlRelationGroup, _formGroup: FormGroup, _layout: DynamicFormLayout): boolean {
-
+export function isFormControlToBeToggled(relGroup: DynamicFormControlRelationGroup, _formGroup: FormGroup, _layout: DynamicFormLayout): boolean {
     let formGroup: FormGroup = _formGroup;
 
-    return relGroup.when.reduce((toBeHidden: boolean, rel: DynamicFormControlRelation, index: number) => {
+    return relGroup.when.reduce((toBeToggled: boolean, rel: DynamicFormControlRelation, index: number) => {
 
-        let control = formGroup.get(rel.id);
+        const control = (!rel.comparisonDataSource || rel.comparisonDataSource === EnumComparisonDataSources.FormControl) ? formGroup.get(rel.id) : null;
+        const isStore = rel.comparisonDataSource === EnumComparisonDataSources.JSON;
 
-        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_HIDDEN) {
+        if ((control || isStore) && [DYNAMIC_FORM_CONTROL_ACTION_DISABLE, DYNAMIC_FORM_CONTROL_ACTION_HIDDEN].includes(relGroup.action)) {
 
-            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && !toBeHidden) {
+            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && !toBeToggled) {
                 return false;
             }
 
-            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && toBeHidden) {
+            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && toBeToggled) {
                 return true;
             }
 
-            return rel.value === control.value || rel.status === control.status;
+            return compare(rel, control, _layout);
         }
 
-        if (control && relGroup.action === DYNAMIC_FORM_CONTROL_ACTION_VISIBLE) {
+        if ((control || isStore) && [DYNAMIC_FORM_CONTROL_ACTION_ENABLE, DYNAMIC_FORM_CONTROL_ACTION_VISIBLE].includes(relGroup.action)) {
 
-            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && toBeHidden) {
+            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_AND && toBeToggled) {
                 return true;
             }
 
-            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && !toBeHidden) {
+            if (index > 0 && relGroup.connective === DYNAMIC_FORM_CONTROL_CONNECTIVE_OR && !toBeToggled) {
                 return false;
             }
 
-            return !(rel.value === control.value || rel.status === control.status);
+            return !compare(rel, control, _layout);
         }
 
         return false;

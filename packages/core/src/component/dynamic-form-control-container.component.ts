@@ -43,7 +43,7 @@ import { DynamicFormControlRelationGroup,
 import { DynamicTemplateDirective } from "../directive/dynamic-template.directive";
 import { DynamicFormLayout, DynamicFormLayoutService } from "../service/dynamic-form-layout.service";
 import { DynamicFormValidationService } from "../service/dynamic-form-validation.service";
-import { findActivationRelations, getRelatedFormControls, isFormControlToBeDisabled, isFormControlToBeHidden } from "../utils/relation.utils";
+import { findActivationRelations, getRelatedFormControls, isFormControlToBeToggled } from "../utils/relation.utils";
 import { DynamicFormControl } from "./dynamic-form-control.interface";
 import { isString } from "../utils/core.utils";
 
@@ -277,11 +277,11 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
 
     updateModelDisabled(relation: DynamicFormControlRelationGroup): void {
 
-        this.model.disabledUpdates.next(isFormControlToBeDisabled(relation, this.group, this.layout));
+        this.model.disabledUpdates.next(isFormControlToBeToggled(relation, this.group, this.layout));
     }
 
     updateModelHidden(relation: DynamicFormControlRelationGroup): void {
-        this.model.hiddenUpdates.next(isFormControlToBeHidden(relation, this.group, this.layout));
+        this.model.hiddenUpdates.next(isFormControlToBeToggled(relation, this.group, this.layout));
     }
 
     unsubscribe(): void {
