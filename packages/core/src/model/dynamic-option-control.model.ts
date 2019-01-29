@@ -10,6 +10,7 @@ export interface DynamicFormOptionConfig<T> {
     disabled?: boolean;
     label?: string;
     value: T;
+    controlTooltip: string;
 }
 
 export class DynamicFormOption<T> {
@@ -17,12 +18,14 @@ export class DynamicFormOption<T> {
     @serializable() disabled: boolean;
     @serializable() label: string | null;
     @serializable() value: T;
+    @serializable() controlTooltip: string | null;
 
     constructor(config: DynamicFormOptionConfig<T>) {
 
         this.disabled = isBoolean(config.disabled) ? config.disabled : false;
         this.label = config.label || null;
         this.value = config.value;
+        this.controlTooltip = config.controlTooltip || null;
     }
 
     get text() {
