@@ -174,6 +174,41 @@ export const MATERIAL_SAMPLE_FORM_MODEL = [
         ]
     }),
 
+    new DynamicSelectModel<string>({
+
+        id: "stateProv",
+        hidden: true,
+        disabled: false,
+        placeholder: "State Prov",
+        hint: "Choose state prov",
+        options: [
+            {
+                label: "California",
+                value: "CA"
+            },
+            {
+                label: "Virginia",
+                value: "VA"
+            },
+            {
+                label: "West Virginia",
+                value: "WV"
+            }
+        ],
+        relation: [
+            {
+                action: "VISIBLE",
+                connective: "OR",
+                when: [
+                    {
+                        id: "room.roomSize",
+                        value: "storeroom"
+                    }
+                ]
+            },
+        ],
+    }),
+
     new DynamicInputModel({
 
         id: "firstName",
