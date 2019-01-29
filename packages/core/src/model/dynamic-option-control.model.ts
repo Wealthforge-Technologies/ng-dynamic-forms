@@ -10,7 +10,7 @@ export interface DynamicFormOptionConfig<T> {
     disabled?: boolean;
     label?: string;
     value: T;
-    controlTooltip: string;
+    controlTooltip?: string;
 }
 
 export class DynamicFormOption<T> {
