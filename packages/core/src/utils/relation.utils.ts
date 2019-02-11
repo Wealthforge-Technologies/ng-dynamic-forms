@@ -30,22 +30,34 @@ export function findActivationRelations(relGroups: DynamicFormControlRelationGro
 
 export function getRelatedFormControls(model: DynamicFormControlModel, controlGroup: FormGroup): FormControl[] {
 
-    let controls: FormControl[] = [];
+    const controls: FormControl[] = [];
 
     model.relation.forEach(relGroup => relGroup.when.forEach(rel => {
-
         if (model.id === rel.id) {
             throw new Error(`FormControl ${model.id} cannot depend on itself`);
         }
 
-        let control = controlGroup.get(rel.id) as FormControl;
-
+        const control = getControl(rel.id, controlGroup);
         if (control && !controls.some(controlElement => controlElement === control)) {
             controls.push(control);
         }
     }));
 
     return controls;
+}
+
+/**
+ * Gets a child control in the specified control, or in any of the
+ * control's parents.
+ * @param id
+ * @param controlToSearch
+ */
+export function getControl(id: string, controlToSearch: AbstractControl): FormControl | null | undefined {
+    let control: FormControl | null | undefined = controlToSearch.get(id) as FormControl;
+    if (!control && controlToSearch.parent !== undefined) {
+        control = getControl(id, controlToSearch.parent);
+    }
+    return control;
 }
 
 function compare(rel: DynamicFormControlRelation, control: AbstractControl | null, layout: DynamicFormLayout, ): boolean {
@@ -70,7 +82,7 @@ export function isFormControlToBeToggled(relGroup: DynamicFormControlRelationGro
 
     return relGroup.when.reduce((toBeToggled: boolean, rel: DynamicFormControlRelation, index: number) => {
 
-        const control = (!rel.comparisonDataSource || rel.comparisonDataSource === EnumComparisonDataSources.FormControl) ? formGroup.get(rel.id) : null;
+        const control = (!rel.comparisonDataSource || rel.comparisonDataSource === EnumComparisonDataSources.FormControl) ? getControl(rel.id, formGroup) : null;
         const isStore = rel.comparisonDataSource === EnumComparisonDataSources.JSON;
 
         if ((control || isStore) && [DYNAMIC_FORM_CONTROL_ACTION_DISABLE, DYNAMIC_FORM_CONTROL_ACTION_HIDDEN].includes(relGroup.action)) {
@@ -83,7 +95,7 @@ export function isFormControlToBeToggled(relGroup: DynamicFormControlRelationGro
                 return true;
             }
 
-            return compare(rel, control, _layout);
+            return compare(rel, control as AbstractControl, _layout);
         }
 
         if ((control || isStore) && [DYNAMIC_FORM_CONTROL_ACTION_ENABLE, DYNAMIC_FORM_CONTROL_ACTION_VISIBLE].includes(relGroup.action)) {
@@ -96,7 +108,7 @@ export function isFormControlToBeToggled(relGroup: DynamicFormControlRelationGro
                 return false;
             }
 
-            return !compare(rel, control, _layout);
+            return !compare(rel, control as AbstractControl, _layout);
         }
 
         return false;
