@@ -10,7 +10,7 @@ import {
     Type,
     ViewContainerRef
 } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, AbstractControl, FormArray } from "@angular/forms";
 import { Subscription } from "rxjs";
 import {
     DynamicFormControlCustomEvent,
@@ -46,6 +46,7 @@ import { DynamicFormValidationService } from "../service/dynamic-form-validation
 import { findActivationRelations, getRelatedFormControls, isFormControlToBeToggled } from "../utils/relation.utils";
 import { DynamicFormControl } from "./dynamic-form-control.interface";
 import { isString } from "../utils/core.utils";
+import { getControlPath } from "../utils/form.utils";
 
 export abstract class DynamicFormControlContainerComponent implements OnChanges, OnDestroy {
 
@@ -179,6 +180,16 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
         return this.layoutService.getClass(controlLayout, context, place);
     }
 
+    getRootFormGroup(control: AbstractControl): FormGroup {
+        if (DynamicFormControlModel.rootFormGroup) {
+            return DynamicFormControlModel.rootFormGroup;
+        } else if (!control.parent) {
+            return DynamicFormControlModel.rootFormGroup = control as FormGroup;
+        }
+
+        return this.getRootFormGroup(control.parent);
+    }
+
     protected createFormControlComponent(): void {
 
         let componentType = this.componentType;
@@ -246,13 +257,22 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
 
         if (relActivations !== null) {
 
-            relActivations.forEach(rel => {
+            // for this relation, store its control path as well as all of its associated control paths
+            // we'll use this mapping later when we toggle a form group/form array from hidden to visible
+            const controlPath          = getControlPath(this.control, "");
+            const relationControlPaths = DynamicFormControlModel.formRelationControlPathsWithRelationPaths.get(controlPath) || new Array<string>();
 
+            relActivations.forEach(rel => {
                 switch (rel.action) {
                     case DYNAMIC_FORM_CONTROL_ACTION_ENABLE:
                     case DYNAMIC_FORM_CONTROL_ACTION_DISABLE:
                         this.updateModelDisabled(rel);
                         getRelatedFormControls(this.model, this.group).forEach(control => {
+                            const path = getControlPath(control, "");
+                            if (relationControlPaths.indexOf(path) === -1) {
+                                relationControlPaths.push(path);
+                            }
+
                             this.subscriptions.push(control.valueChanges.subscribe(() => this.updateModelDisabled(rel)));
                             this.subscriptions.push(control.statusChanges.subscribe(() => this.updateModelDisabled(rel)));
                         });
@@ -262,12 +282,20 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
                     case DYNAMIC_FORM_CONTROL_ACTION_VISIBLE:
                         this.updateModelHidden(rel);
                         getRelatedFormControls(this.model, this.group).forEach(control => {
+                            const path = getControlPath(control, "");
+                            if (relationControlPaths.indexOf(path) === -1) {
+                                relationControlPaths.push(path);
+                            }
+
                             this.subscriptions.push(control.valueChanges.subscribe(() => this.updateModelHidden(rel)));
                             this.subscriptions.push(control.statusChanges.subscribe(() => this.updateModelHidden(rel)));
                         });
                         break;
                 }
+
             });
+
+            DynamicFormControlModel.formRelationControlPathsWithRelationPaths.set(controlPath, relationControlPaths);
         }
     }
 
@@ -314,12 +342,55 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
     }
 
     onModelHiddenUpdates(value: boolean, relation: DynamicFormControlRelationGroup[]): void {
-        // *always* disable hidden controls so that validation rules don't fire
         if (value) {
-            this.control.disable();
-        } else {
+            this.control.disable(); // *always* disable hidden controls so that validation rules don't fire
+        } else if (this.control instanceof FormGroup || this.control instanceof FormArray) {
+            this.control.enable();
+
+            // NOTE: when we enable a FormGroup or FormArray, the default Angular functionality
+            //       is to enable all child controls as well.
+            //       this presents a problem for us b/c a child control may have a relation that,
+            //       based on the values in other controls, dictates that the child control be disabled.
+            //       therefore, we need to "fire/trigger" all relations for all child controls
+            //
+            // NOTE: cursory research and testing leads us to believe that the best way to "fire/trigger"
+            //       a value/status change w/o actually changing anything is to invoke a form control's
+            //       updateValueAndValidity() method.
+            const rootFormGroup     = this.getRootFormGroup(this.control);
+            const controlPath       = getControlPath(this.control, "");
+            const arrProcessedPaths = Array<string>();
+
+            // OPTION: 1 => more efficient than OPTION 2, but not well tested with form arrays
+            DynamicFormControlModel.formRelationControlPathsWithRelationPaths.forEach((paths, key) => {
+              if (key.startsWith(controlPath) && key !== controlPath) { // avoid infinite loop of enable/disable form controls
+                  for (const path of paths) {
+                    if (arrProcessedPaths.indexOf(path) === -1) {
+                        const c = rootFormGroup.get(path);
+                        if (c) {
+                            c.updateValueAndValidity();
+                        }
+
+                        arrProcessedPaths.push(path);
+                    }
+                  }
+              }
+            });
+
+            // OPTION: 2 => this works, but... not as efficient b/c updateValueAndValidity
+            //              called on non-related form controls
+            // for (const path of DynamicFormControlModel.formRelationControlPaths) {
+            //     if (path.startsWith(controlPath)) { // avoid inifinte loop
+            //         continue;
+            //     }
+
+            //     const c = rootFormGroup.get(path);
+            //     if (c) {
+            //         c.updateValueAndValidity();
+            //     }
+            // }
+        } else if (this.control instanceof FormControl) { // only run the following on form controls (not form groups and arrays)
             // given that we *always* disable the control,
-            // we need to *always* enable it *IF* there is no DISABLE relatio
+            // we need to *always* enable it *IF* there is no DISABLE relation
             // if there is a DISABLE relation, then we do nothing and defer to
             // the onModelDisabledUpdates function
             if (!relation.find(rel => [DYNAMIC_FORM_CONTROL_ACTION_DISABLE, DYNAMIC_FORM_CONTROL_ACTION_ENABLE].includes(rel.action))) {

@@ -1,4 +1,4 @@
-import { FormHooks } from "@angular/forms/src/model";
+import { FormHooks, FormGroup } from "@angular/forms/src/model";
 import { Subject } from "rxjs";
 import { DynamicFormControlLayout } from "./misc/dynamic-form-control-layout.model";
 import { DynamicPathable } from "./misc/dynamic-form-control-path.model";
@@ -43,6 +43,11 @@ export abstract class DynamicFormControlModel implements DynamicPathable {
     @serializable() validators: DynamicValidatorsConfig | null;
 
     abstract readonly type: string;
+
+    // static properies used for re-evaluating relations when
+    // a hidden form group or hidden form array becomes visible
+    static rootFormGroup: FormGroup | null  = null;
+    static formRelationControlPathsWithRelationPaths = new Map<string, Array<string>>();
 
     protected constructor(config: DynamicFormControlModelConfig, layout: DynamicFormControlLayout | null = null) {
 

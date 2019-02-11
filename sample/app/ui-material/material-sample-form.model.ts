@@ -60,6 +60,94 @@ export const MATERIAL_SAMPLE_FORM_MODEL = [
         }
     }),
 
+    new DynamicInputModel({
+        id: "groupVisibilityTest",
+        placeholder: "Group VisibilityTest",
+        hint:        "type 'show'",
+    }),
+
+    new DynamicInputModel({
+        id: "checkboxVisibilityTest",
+        placeholder: "Checkbox VisibilityTest",
+        hint:        "type 'show'",
+        // required: true,
+    }),
+
+    new DynamicFormGroupModel({
+        id: "groupVisibility",
+        relation: [
+            {
+                action: "VISIBLE",
+                when: [
+                    {
+                        id: "groupVisibilityTest",
+                        comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                        value:  "show"
+                    }
+                ]
+            }
+        ],
+        group: [
+            new DynamicInputModel({
+                id: "name",
+                placeholder: "Name",
+                // disabled: true,
+                required: true,
+                relation: [
+                    {
+                        action: "ENABLE",
+                        when: [
+                            {
+                                id: "checkboxVisibilityTest",
+                                comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                                value:  "show"
+                            }
+                        ]
+                    },
+                    {
+                        action: "DISABLE",
+                        connective: "OR",
+                        when: [
+                            {
+                                id: "checkboxVisibilityTest",
+                                comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                                value:  null
+                            },
+                            {
+                                id: "checkboxVisibilityTest",
+                                comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                                value: ""
+                            },
+                            {
+                                id: "room.roomSize",
+                                comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                                value: "double-room"
+                            }
+                        ]
+                    }
+                ],
+            }),
+
+            new DynamicCheckboxModel({
+                id: "checkboxVisibility",
+                label: "Testing Checkbox Visibility",
+                hidden: true,
+                relation: [
+                    {
+                        action: "VISIBLE",
+                        when: [
+                            {
+                                id: "checkboxVisibilityTest",
+                                comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                                value:  "show"
+                            }
+                        ]
+                    }
+                ],
+            }),
+        ],
+    }),
+
     new DynamicFormGroupModel({
 
         id: "stay",
