@@ -16,6 +16,7 @@ export interface DynamicFormControlRelation {
 
     id:                    string;
     comparisonDataSource?: EnumComparisonDataSources;
+    comparative?:          string;
     status?:               string;
     value?:                any;
 }

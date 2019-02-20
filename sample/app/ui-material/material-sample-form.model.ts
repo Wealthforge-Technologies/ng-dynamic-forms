@@ -61,6 +61,41 @@ export const MATERIAL_SAMPLE_FORM_MODEL = [
     }),
 
     new DynamicInputModel({
+        id: "comparativeTestValue",
+        placeholder: "Comparative Test Value",
+        hint:        "type '6'"
+    }),
+
+    new DynamicInputModel({
+        id: "comparativeTestValue1",
+        placeholder: "Comparative Test 1",
+        relation: [
+            {
+                action: "VISIBLE",
+                when: [
+                    {
+                        id: "comparativeTestValue",
+                        comparative: "!includes",
+                        comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                        value:  [null, ""]
+                    }
+                ]
+            },
+            {
+                action: "DISABLE",
+                when: [
+                    {
+                        id: "comparativeTestValue",
+                        comparative: ">",
+                        comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                        value: 5
+                    }
+                ]
+            }
+        ],
+    }),
+
+    new DynamicInputModel({
         id: "groupVisibilityTest",
         placeholder: "Group VisibilityTest",
         hint:        "type 'show'",
