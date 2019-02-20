@@ -1,6 +1,6 @@
 {
   "name": "@wf-dynamic-forms/core",
-  "version": "10.0.4",
+  "version": "10.0.5",
   "description": "A rapid form development library for Angular",
   "keywords": [
     "angular",
