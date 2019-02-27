@@ -180,6 +180,18 @@ export const MATERIAL_SAMPLE_FORM_MODEL = [
                     }
                 ],
             }),
+
+            new DynamicFormGroupModel({
+                id: "childGroup",
+                group: [
+                    new DynamicInputModel({
+                        id: "name",
+                        placeholder: "Child Group Name",
+                        // disabled: true,
+                        required: true,
+                    })
+                ]
+            })
         ],
     }),
 
