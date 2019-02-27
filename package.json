@@ -1,6 +1,6 @@
 {
   "name": "@wf-dynamic-forms/main",
-  "version": "10.0.6",
+  "version": "10.0.7",
   "description": "A rapid form development library for Angular",
   "scripts": {
     "aot-compile:sample": "ngc -p sample/tsconfig.aot.ngc.json",
