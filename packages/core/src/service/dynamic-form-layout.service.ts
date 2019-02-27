@@ -105,11 +105,11 @@ export class DynamicFormLayoutService {
             if (parent instanceof DynamicFormArrayGroupModel) {
 
                 id = `${parent.context.id}-${parent.index}-${model.id}`;
-                break;
+                // break;
             } else if (parent instanceof DynamicFormGroupModel) {
 
                 id = `${parent.id}-${model.id}`;
-                break;
+                // break;
             }
 
             parent = parent.parent;
