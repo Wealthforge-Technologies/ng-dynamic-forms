@@ -7,6 +7,7 @@ import {
 } from "../model/misc/dynamic-form-control-layout.model";
 import { DynamicFormControlModel } from "../model/dynamic-form-control.model";
 import { DynamicFormArrayGroupModel } from "../model/form-array/dynamic-form-array.model";
+import { DynamicFormGroupModel } from "../model/form-group/dynamic-form-group.model";
 import { DynamicFormControl } from "../component/dynamic-form-control.interface";
 import {
     DynamicTemplateDirective,
@@ -104,6 +105,10 @@ export class DynamicFormLayoutService {
             if (parent instanceof DynamicFormArrayGroupModel) {
 
                 id = `${parent.context.id}-${parent.index}-${model.id}`;
+                break;
+            } else if (parent instanceof DynamicFormGroupModel) {
+
+                id = `${parent.id}-${model.id}`;
                 break;
             }
 
