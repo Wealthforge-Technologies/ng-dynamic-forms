@@ -1,0 +1,93 @@
+import {
+    DynamicCheckboxModel,
+    DynamicDatePickerModel,
+    DynamicFormGroupModel,
+    DynamicInputModel,
+    DynamicRadioGroupModel,
+    DynamicSelectModel,
+    DynamicSwitchModel,
+    DynamicTextAreaModel
+} from "@wf-dynamic-forms/core";
+import { BehaviorSubject } from "rxjs";
+import * as RelationModel from "@wf-dynamic-forms/core/src/model/misc/dynamic-form-control-relation.model"
+
+export const MATERIAL_SAMPLE_FORM_MODEL = [
+
+    new DynamicInputModel({
+        id: "comparativeTestValue",
+        placeholder: "Comparative Test Value",
+        hint:        "type '6'"
+    }),
+
+    new DynamicInputModel({
+        id: "groupVisibilityTest",
+        placeholder: "Group VisibilityTest",
+        hint:        "type 'show' or 'hide'",
+        relation: [
+            {
+                action: "VISIBLE",
+                when: [
+                    {
+                        id: "comparativeTestValue",
+                        comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                        value:  "6"
+                    }
+                ]
+            }
+        ]
+    }),
+
+    new DynamicFormGroupModel({
+        id: "groupRecursiveIssueTest1",
+        relation: [
+            {
+                action: "VISIBLE",
+                when: [
+                    {
+                        id: "comparativeTestValue",
+                        comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                        comparative: "!==",
+                        value:  null
+                    }
+                ]
+            }
+        ],
+        group: [
+            new DynamicInputModel({
+                id: "recursiveTest1",
+                placeholder: "Recursive Test 1 (of 2)",
+                // disabled: true,
+                required: true,
+                relation: [
+                    {
+                        action: "VISIBLE",
+                        when: [
+                            {
+                                id: "comparativeTestValue",
+                                comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                                value:  "6"
+                            }
+                        ]
+                    }
+                ]
+            }),
+            new DynamicInputModel({
+                id: "recursiveTest2",
+                placeholder: "Recursive Test 2",
+                required: true,
+                relation: [
+                    {
+                        action: "VISIBLE",
+                        when: [
+                            {
+                                id: "groupVisibilityTest",
+                                comparisonDataSource: RelationModel.EnumComparisonDataSources.FormControl,
+                                value:  "hide"
+                            }
+                        ]
+                    }
+                ]
+            })
+        ],
+    }),
+];

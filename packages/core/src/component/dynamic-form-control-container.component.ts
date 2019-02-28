@@ -47,6 +47,7 @@ import { findActivationRelations, getRelatedFormControls, isFormControlToBeToggl
 import { DynamicFormControl } from "./dynamic-form-control.interface";
 import { isString } from "../utils/core.utils";
 import { getControlPath } from "../utils/form.utils";
+import { distinctUntilChanged } from "rxjs/operators";
 
 export abstract class DynamicFormControlContainerComponent implements OnChanges, OnDestroy {
 
@@ -273,8 +274,10 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
                                 relationControlPaths.push(path);
                             }
 
-                            this.subscriptions.push(control.valueChanges.subscribe(() => this.updateModelDisabled(rel)));
-                            this.subscriptions.push(control.statusChanges.subscribe(() => this.updateModelDisabled(rel)));
+                            // this.subscriptions.push(control.valueChanges.subscribe(() => this.updateModelDisabled(rel)));
+                            // this.subscriptions.push(control.statusChanges.subscribe(() => this.updateModelDisabled(rel)));
+                            this.subscriptions.push(control.valueChanges.pipe(distinctUntilChanged()).subscribe(() => this.updateModelDisabled(rel)));
+                            this.subscriptions.push(control.statusChanges.pipe(distinctUntilChanged()).subscribe(() => this.updateModelDisabled(rel)));
                         });
                         break;
 
@@ -287,8 +290,10 @@ export abstract class DynamicFormControlContainerComponent implements OnChanges,
                                 relationControlPaths.push(path);
                             }
 
-                            this.subscriptions.push(control.valueChanges.subscribe(() => this.updateModelHidden(rel)));
-                            this.subscriptions.push(control.statusChanges.subscribe(() => this.updateModelHidden(rel)));
+                            // this.subscriptions.push(control.valueChanges.subscribe(() => this.updateModelHidden(rel)));
+                            // this.subscriptions.push(control.statusChanges.subscribe(() => this.updateModelHidden(rel)));
+                            this.subscriptions.push(control.valueChanges.pipe(distinctUntilChanged()).subscribe(() => this.updateModelHidden(rel)));
+                            this.subscriptions.push(control.statusChanges.pipe(distinctUntilChanged()).subscribe(() => this.updateModelHidden(rel)));
                         });
                         break;
                 }
