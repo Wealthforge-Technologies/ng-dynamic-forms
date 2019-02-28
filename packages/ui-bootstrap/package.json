@@ -1,6 +1,6 @@
 {
   "name": "@wf-dynamic-forms/ui-bootstrap",
-  "version": "10.0.8",
+  "version": "10.0.9",
   "description": "Bootstrap UI package for NG Dynamic Forms",
   "keywords": [
     "angular",
@@ -33,7 +33,7 @@
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
     "@angular/forms": "^7.0.0",
-    "@wf-dynamic-forms/core": "^10.0.8",
+    "@wf-dynamic-forms/core": "^10.0.9",
     "angular2-text-mask": "^9.0.0",
     "bootstrap": "^3.3.7",
     "ngx-bootstrap": "^3.1.1",
